@@ -21,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Jesus Youth" />
+      </head>
       <body>
         <ThemeProvider>
           {/* Add this main wrapper to center the website and provide global padding */}
