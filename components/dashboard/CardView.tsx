@@ -27,11 +27,11 @@ export function CardView({ missionaries, onEdit, onDelete }: CardViewProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
       {missionaries.map((m) => (
         <div
           key={m.id}
-          className="card p-5 flex flex-col gap-3 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+          className="card p-4 flex flex-col gap-3 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
           style={{ borderColor: 'var(--border)' }}
         >
           {/* Header */}
