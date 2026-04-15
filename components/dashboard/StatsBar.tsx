@@ -85,23 +85,29 @@ export function StatsBar({ missionaries }: StatsBarProps) {
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="card p-4 flex items-center gap-3 transition-all duration-200 hover:scale-[1.02]"
+          className="glass-card p-5 flex items-center gap-4 group relative overflow-hidden"
         >
+          {/* Ambient Glow effect on hover */}
+          <div 
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            style={{ background: `radial-gradient(circle at center, ${stat.color}15 0%, transparent 60%)` }}
+          />
+          
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-            style={{ background: stat.bg, color: stat.color }}
+            className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-lg relative z-10 transition-transform group-hover:scale-110 duration-300"
+            style={{ background: stat.bg, color: stat.color, border: `1px solid ${stat.color}30` }}
           >
             {stat.icon}
           </div>
-          <div className="min-w-0">
-            <p className="text-xl font-bold leading-none" style={{ color: 'var(--text)' }}>
+          <div className="min-w-0 relative z-10">
+            <p className="text-2xl font-extrabold leading-none tracking-tight mb-1 transition-all duration-300" style={{ color: 'var(--text)', textShadow: `0 2px 10px ${stat.color}40` }}>
               {stat.value}
             </p>
-            <p className="text-xs mt-0.5 truncate" style={{ color: 'var(--text-muted)' }}>
+            <p className="text-xs uppercase tracking-wider font-semibold truncate" style={{ color: 'var(--text-subtle)' }}>
               {stat.label}
             </p>
           </div>

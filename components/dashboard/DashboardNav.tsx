@@ -15,11 +15,11 @@ export function DashboardNav() {
 
   return (
     <header
-      className="sticky top-0 z-40 border-b no-print"
+      className="sticky top-0 z-40 no-print backdrop-blur-3xl saturate-150 border-b transition-all"
       style={{
-        backgroundColor: 'var(--surface)',
+        backgroundColor: 'var(--surface-2)',
         borderColor: 'var(--border)',
-        boxShadow: 'var(--shadow-sm)',
+        boxShadow: 'var(--shadow)',
       }}
     >
       <DashboardContainer>

@@ -58,7 +58,7 @@ export function Toolbar({
     searchQuery || filters.ministry || filters.activeStatus !== 'all' || filters.joinedYear || filters.course;
 
   return (
-    <div className="card p-4 md:p-6 no-print space-y-4">
+    <div className="glass-panel p-5 md:p-6 no-print space-y-5">
       {/* Row 1: Search + Add */}
       <div className="flex flex-col md:flex-row md:items-center gap-3">
         {/* Search */}

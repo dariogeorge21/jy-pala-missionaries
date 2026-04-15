@@ -16,12 +16,12 @@ function AvatarBg(name: string): string {
 export function CardView({ missionaries, onEdit, onDelete }: CardViewProps) {
   if (missionaries.length === 0) {
     return (
-      <div className="card py-20 text-center">
-        <svg className="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'var(--text-subtle)' }}>
+      <div className="glass-panel py-24 text-center">
+        <svg className="mx-auto mb-5 opacity-40" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'var(--text-subtle)' }}>
           <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
           <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
         </svg>
-        <p className="font-medium" style={{ color: 'var(--text-muted)' }}>No missionaries found</p>
+        <p className="text-lg font-semibold tracking-wide" style={{ color: 'var(--text-muted)' }}>No missionaries found</p>
       </div>
     );
   }
@@ -31,8 +31,7 @@ export function CardView({ missionaries, onEdit, onDelete }: CardViewProps) {
       {missionaries.map((m) => (
         <div
           key={m.id}
-          className="card p-4 flex flex-col gap-3 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-          style={{ borderColor: 'var(--border)' }}
+          className="glass-card p-5 flex flex-col gap-4 group"
         >
           {/* Header */}
           <div className="flex items-start justify-between gap-2">

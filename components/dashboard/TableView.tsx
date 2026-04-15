@@ -28,19 +28,19 @@ function CoursePills({ courses }: { courses: string[] }) {
 export function TableView({ missionaries, onEdit, onDelete }: TableViewProps) {
   if (missionaries.length === 0) {
     return (
-      <div className="card py-20 text-center">
-        <svg className="mx-auto mb-4" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'var(--text-subtle)' }}>
+      <div className="glass-panel py-24 text-center">
+        <svg className="mx-auto mb-5 opacity-40" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'var(--text-subtle)' }}>
           <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
           <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
         </svg>
-        <p className="font-medium" style={{ color: 'var(--text-muted)' }}>No missionaries found</p>
-        <p className="text-sm mt-1" style={{ color: 'var(--text-subtle)' }}>Try adjusting your search or filters</p>
+        <p className="text-lg font-semibold tracking-wide" style={{ color: 'var(--text-muted)' }}>No missionaries found</p>
+        <p className="text-sm mt-2 font-medium" style={{ color: 'var(--text-subtle)' }}>Try adjusting your search or filters</p>
       </div>
     );
   }
 
   return (
-    <div className="card overflow-hidden">
+    <div className="glass-panel overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full print-table">
           <thead>
@@ -60,13 +60,13 @@ export function TableView({ missionaries, onEdit, onDelete }: TableViewProps) {
             {missionaries.map((m, idx) => (
               <tr
                 key={m.id}
-                className="transition-colors duration-100"
+                className="transition-all duration-300 relative group"
                 style={{
                   borderBottom: '1px solid var(--border)',
-                  backgroundColor: idx % 2 === 0 ? 'var(--surface)' : 'var(--surface-2)',
+                  backgroundColor: 'transparent',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(99,102,241,0.04)')}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = idx % 2 === 0 ? 'var(--surface)' : 'var(--surface-2)')}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--surface-3)')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
               >
                 <td className="px-4 py-3 text-sm font-mono" style={{ color: 'var(--text-subtle)', width: '50px' }}>
                   {m.serial_number}

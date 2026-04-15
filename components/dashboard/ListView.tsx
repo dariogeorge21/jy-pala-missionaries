@@ -11,20 +11,26 @@ interface ListViewProps {
 export function ListView({ missionaries, onEdit, onDelete }: ListViewProps) {
   if (missionaries.length === 0) {
     return (
-      <div className="card py-20 text-center">
-        <p className="font-medium" style={{ color: 'var(--text-muted)' }}>No missionaries found</p>
+      <div className="glass-panel py-20 text-center">
+        <p className="text-lg font-semibold tracking-wide flex flex-col items-center gap-3" style={{ color: 'var(--text-muted)' }}>
+          <svg className="opacity-40" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          No missionaries found
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="card overflow-hidden divide-y" style={{ borderColor: 'var(--border)' }}>
+    <div className="glass-panel overflow-hidden divide-y" style={{ borderColor: 'var(--border)' }}>
       {missionaries.map((m) => (
         <div
           key={m.id}
-          className="flex items-center gap-4 p-4 transition-colors duration-100"
-          style={{ '--tw-divide-color': 'var(--border)' } as React.CSSProperties}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(99,102,241,0.03)')}
+          className="flex items-center gap-4 p-4 transition-all duration-300 relative group"
+          style={{ '--tw-divide-color': 'var(--border)', backgroundColor: 'transparent' } as React.CSSProperties}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--surface-3)')}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
         >
           {/* Serial */}
