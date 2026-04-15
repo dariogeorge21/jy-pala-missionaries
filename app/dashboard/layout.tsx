@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { DashboardNav } from '@/components/dashboard/DashboardNav';
+import { DashboardContainer } from '@/components/dashboard/DashboardContainer';
 
 export const metadata: Metadata = {
   title: 'Dashboard – JY Pala Missionaries',
@@ -17,8 +18,10 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--bg)' }}>
       <DashboardNav />
-      <main className="flex-1 w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {children}
+      <main className="flex-1 w-full py-6">
+        <DashboardContainer>
+          {children}
+        </DashboardContainer>
       </main>
     </div>
   );
