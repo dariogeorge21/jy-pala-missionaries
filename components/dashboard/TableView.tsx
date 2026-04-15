@@ -93,10 +93,10 @@ export function TableView({ missionaries, onEdit, onDelete }: TableViewProps) {
                     {m.ministry}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-sm" style={{ color: 'var(--text-muted)', maxWidth: '160px' }}>
+                <td className="px-4 py-3 text-sm" style={{ color: 'var(--text-muted)' }}>
                   <span className="truncate block">{m.study_work || '—'}</span>
                 </td>
-                <td className="px-4 py-3" style={{ maxWidth: '220px' }}>
+                <td className="px-4 py-3">
                   <CoursePills courses={m.jy_courses} />
                 </td>
                 <td className="px-4 py-3 text-sm font-medium" style={{ color: 'var(--text)' }}>
