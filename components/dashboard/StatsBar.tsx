@@ -8,11 +8,10 @@ interface StatsBarProps {
 
 export function StatsBar({ missionaries }: StatsBarProps) {
   const total = missionaries.length;
-  const active = missionaries.filter((m) => m.is_active).length;
-  const inactive = total - active;
-  const ministries = new Set(missionaries.map((m) => m.ministry)).size;
-  const currentYear = new Date().getFullYear();
-  const newThisYear = missionaries.filter((m) => m.joined_year === currentYear).length;
+  const campusCount = missionaries.filter((m) => m.ministry.toLowerCase().includes('campus')).length;
+  const parishCount = missionaries.filter((m) => m.ministry.toLowerCase().includes('parish')).length;
+  const teensCount = missionaries.filter((m) => m.ministry.toLowerCase().includes('teens')).length;
+  const otherCount = Math.max(total - campusCount - parishCount - teensCount, 0);
 
   const stats = [
     {
@@ -30,57 +29,61 @@ export function StatsBar({ missionaries }: StatsBarProps) {
       bg: 'rgba(99,102,241,0.1)',
     },
     {
-      label: 'Active',
-      value: active,
+      label: 'Campus Missionaries',
+      value: campusCount,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-          <polyline points="22 4 12 14.01 9 11.01"/>
+          <path d="M4 22h16"/>
+          <path d="M6 18V8"/>
+          <path d="M10 18V8"/>
+          <path d="M14 18V8"/>
+          <path d="M18 18V8"/>
+          <path d="M3 8l9-6 9 6"/>
         </svg>
       ),
-      color: '#22c55e',
-      bg: 'rgba(34,197,94,0.1)',
+      color: '#3b82f6',
+      bg: 'rgba(59,130,246,0.1)',
     },
     {
-      label: 'Inactive',
-      value: inactive,
+      label: 'Parish Missionaries',
+      value: parishCount,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="15" y1="9" x2="9" y2="15"/>
-          <line x1="9" y1="9" x2="15" y2="15"/>
+          <path d="M12 3v18"/>
+          <path d="M7 8h10"/>
+          <path d="M5 21h14"/>
+          <path d="M8 21V11h8v10"/>
+        </svg>
+      ),
+      color: '#10b981',
+      bg: 'rgba(16,185,129,0.1)',
+    },
+    {
+      label: 'Teens Missionaries',
+      value: teensCount,
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 11c1.66 0 3-1.57 3-3.5S17.66 4 16 4s-3 1.57-3 3.5 1.34 3.5 3 3.5z"/>
+          <path d="M8 12c2.21 0 4-2.02 4-4.5S10.21 3 8 3 4 5.02 4 7.5 5.79 12 8 12z"/>
+          <path d="M4 21v-1c0-2.21 1.79-4 4-4h2"/>
+          <path d="M14 21v-1c0-1.66 1.34-3 3-3h1c1.1 0 2 .9 2 2v2"/>
         </svg>
       ),
       color: '#f59e0b',
       bg: 'rgba(245,158,11,0.1)',
     },
     {
-      label: 'Ministries',
-      value: ministries,
+      label: 'Other',
+      value: otherCount,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="7" height="7"/>
-          <rect x="14" y="3" width="7" height="7"/>
-          <rect x="14" y="14" width="7" height="7"/>
-          <rect x="3" y="14" width="7" height="7"/>
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M8 12h8"/>
+          <path d="M12 8v8"/>
         </svg>
       ),
-      color: '#8b5cf6',
-      bg: 'rgba(139,92,246,0.1)',
-    },
-    {
-      label: `Joined ${currentYear}`,
-      value: newThisYear,
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-      ),
-      color: '#06b6d4',
-      bg: 'rgba(6,182,212,0.1)',
+      color: '#6b7280',
+      bg: 'rgba(107,114,128,0.1)',
     },
   ];
 
@@ -92,11 +95,11 @@ export function StatsBar({ missionaries }: StatsBarProps) {
           className="glass-card p-5 flex items-center gap-4 group relative overflow-hidden"
         >
           {/* Ambient Glow effect on hover */}
-          <div 
+          <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
             style={{ background: `radial-gradient(circle at center, ${stat.color}15 0%, transparent 60%)` }}
           />
-          
+
           <div
             className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-lg relative z-10 transition-transform group-hover:scale-110 duration-300"
             style={{ background: stat.bg, color: stat.color, border: `1px solid ${stat.color}30` }}
