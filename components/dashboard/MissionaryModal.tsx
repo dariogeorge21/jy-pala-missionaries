@@ -168,18 +168,33 @@ export function MissionaryModal({ missionary, customCourses, onSave, onClose, on
 
             {/* Ministry */}
             <Field label="Ministry *" error={errors.ministry}>
-              <select
-                id="form-ministry"
-                value={form.ministry}
-                onChange={(e) => { setForm({ ...form, ministry: e.target.value }); setErrors({ ...errors, ministry: '' }); }}
-                className="input"
-                style={{ borderColor: errors.ministry ? 'var(--danger)' : undefined }}
-              >
-                <option value="">Select ministry…</option>
-                {PREDEFINED_MINISTRIES.map((m) => (
-                  <option key={m} value={m}>{m}</option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  id="form-ministry"
+                  value={form.ministry}
+                  onChange={(e) => { setForm({ ...form, ministry: e.target.value }); setErrors({ ...errors, ministry: '' }); }}
+                  className="input pr-10 font-medium"
+                  style={{ borderColor: errors.ministry ? 'var(--danger)' : undefined, color: form.ministry ? 'var(--text)' : 'var(--text-muted)', appearance: 'none' }}
+                >
+                  <option value="" disabled style={{ backgroundColor: '#000000', color: '#e2e8f0' }}>
+                    Select ministry...
+                  </option>
+                  {PREDEFINED_MINISTRIES.map((m) => (
+                    <option key={m} value={m} style={{ backgroundColor: '#000000', color: '#e2e8f0' }}>
+                      {m}
+                    </option>
+                  ))}
+                </select>
+                <span
+                  className="pointer-events-none absolute inset-y-0 right-3 flex items-center"
+                  style={{ color: form.ministry ? 'var(--text-muted)' : 'var(--text-subtle)' }}
+                  aria-hidden="true"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </div>
             </Field>
 
             {/* Study / Work */}
