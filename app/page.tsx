@@ -7,6 +7,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const router = useRouter();
 
   // Initialize DB on first load
@@ -28,19 +29,55 @@ export default function LoginPage() {
       });
       const data = await res.json();
       if (data.success) {
+        setIsNavigating(true);
         router.push('/dashboard');
       } else {
         setError('Incorrect password. Please try again.');
+        setLoading(false);
       }
     } catch {
       setError('Something went wrong. Please try again.');
-    } finally {
       setLoading(false);
     }
   };
 
   return (
     <main className="relative w-full min-h-screen flex items-center justify-center p-4 overflow-hidden bg-[var(--bg)]">
+      {/* Loading Overlay during navigation */}
+      {isNavigating && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md transition-all duration-300"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
+        >
+          <div className="flex flex-col items-center gap-4">
+            <div className="relative w-16 h-16">
+              <svg 
+                className="absolute inset-0 animate-spin" 
+                width="64" 
+                height="64" 
+                viewBox="0 0 64 64" 
+                fill="none"
+              >
+                <circle 
+                  cx="32" 
+                  cy="32" 
+                  r="28" 
+                  stroke="url(#gradient)" 
+                  strokeWidth="4"
+                  strokeDasharray="86 150"
+                />
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#6366f1" />
+                    <stop offset="100%" stopColor="#4f46e5" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <p className="text-white font-medium text-sm tracking-wide">Redirecting to dashboard...</p>
+          </div>
+        </div>
+      )}
       {/* Dynamic Animated Background Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
@@ -120,15 +157,15 @@ export default function LoginPage() {
               <button
                 id="login-submit"
                 type="submit"
-                disabled={loading}
+                disabled={loading || isNavigating}
                 className="btn btn-primary w-full py-3.5 text-base shadow-lg"
               >
-                {loading ? (
+                {loading || isNavigating ? (
                   <span className="flex items-center justify-center gap-2">
                     <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M21 12a9 9 0 11-6.219-8.56"/>
                     </svg>
-                    Authenticating...
+                    {isNavigating ? 'Redirecting...' : 'Authenticating...'}
                   </span>
                 ) : 'Secure Login'}
               </button>
