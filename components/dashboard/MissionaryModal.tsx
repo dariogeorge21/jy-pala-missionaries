@@ -129,7 +129,7 @@ export function MissionaryModal({ missionary, customCourses, onSave, onClose, on
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div
-          className="flex items-center justify-between px-6 py-4"
+          className="flex items-center justify-between p-6"
           style={{ borderBottom: '1px solid var(--border)' }}
         >
           <h2 className="text-lg font-semibold" style={{ color: 'var(--text)' }}>
@@ -144,7 +144,7 @@ export function MissionaryModal({ missionary, customCourses, onSave, onClose, on
 
         {/* Form */}
         <form onSubmit={handleSubmit} noValidate>
-          <div className="p-6 space-y-5">
+          <div className="p-6 space-y-4">
             {/* Name */}
             <Field label="Full Name *" error={errors.name}>
               <input
@@ -187,40 +187,44 @@ export function MissionaryModal({ missionary, customCourses, onSave, onClose, on
             </Field>
 
             {/* Joined Year + Active */}
-            <div className="grid grid-cols-2 gap-4">
-              <Field label="Joined Year *" error={errors.joined_year}>
-                <input
-                  id="form-year"
-                  type="number"
-                  value={form.joined_year}
-                  onChange={(e) => { setForm({ ...form, joined_year: Number(e.target.value) }); setErrors({ ...errors, joined_year: '' }); }}
-                  min={2000}
-                  max={new Date().getFullYear() + 1}
-                  className="input"
-                  style={{ borderColor: errors.joined_year ? 'var(--danger)' : undefined }}
-                />
-              </Field>
-              <Field label="Status">
-                <div className="flex items-center gap-3 h-[38px]">
-                  <button
-                    type="button"
-                    id="form-active-toggle"
-                    onClick={() => setForm({ ...form, is_active: !form.is_active })}
-                    className="relative inline-flex w-11 h-6 rounded-full transition-colors duration-200 flex-shrink-0"
-                    style={{ backgroundColor: form.is_active ? 'var(--primary)' : 'var(--border)' }}
-                    role="switch"
-                    aria-checked={form.is_active}
-                  >
-                    <span
-                      className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-200"
-                      style={{ transform: form.is_active ? 'translateX(20px)' : 'translateX(0)' }}
-                    />
-                  </button>
-                  <span className="text-sm font-medium" style={{ color: form.is_active ? '#22c55e' : 'var(--text-muted)' }}>
-                    {form.is_active ? 'Active' : 'Inactive'}
-                  </span>
-                </div>
-              </Field>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1">
+                <Field label="Joined Year *" error={errors.joined_year}>
+                  <input
+                    id="form-year"
+                    type="number"
+                    value={form.joined_year}
+                    onChange={(e) => { setForm({ ...form, joined_year: Number(e.target.value) }); setErrors({ ...errors, joined_year: '' }); }}
+                    min={2000}
+                    max={new Date().getFullYear() + 1}
+                    className="input"
+                    style={{ borderColor: errors.joined_year ? 'var(--danger)' : undefined }}
+                  />
+                </Field>
+              </div>
+              <div className="flex-1">
+                <Field label="Status">
+                  <div className="flex items-center gap-3 h-10 mt-1">
+                    <button
+                      type="button"
+                      id="form-active-toggle"
+                      onClick={() => setForm({ ...form, is_active: !form.is_active })}
+                      className="relative inline-flex w-11 h-6 rounded-full transition-colors duration-200 shrink-0"
+                      style={{ backgroundColor: form.is_active ? 'var(--primary)' : 'var(--border)' }}
+                      role="switch"
+                      aria-checked={form.is_active}
+                    >
+                      <span
+                        className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-200"
+                        style={{ transform: form.is_active ? 'translateX(20px)' : 'translateX(0)' }}
+                      />
+                    </button>
+                    <span className="text-sm font-medium" style={{ color: form.is_active ? '#22c55e' : 'var(--text-muted)' }}>
+                      {form.is_active ? 'Active' : 'Inactive'}
+                    </span>
+                  </div>
+                </Field>
+              </div>
             </div>
 
             {/* JY Courses */}
@@ -278,7 +282,7 @@ export function MissionaryModal({ missionary, customCourses, onSave, onClose, on
                     id="add-course-btn"
                     onClick={handleAddCourse}
                     disabled={addingCourse}
-                    className="btn btn-ghost btn-sm flex-shrink-0"
+                    className="btn btn-ghost btn-sm shrink-0"
                   >
                     {addingCourse ? '…' : '+ Add'}
                   </button>
@@ -290,7 +294,7 @@ export function MissionaryModal({ missionary, customCourses, onSave, onClose, on
 
           {/* Footer */}
           <div
-            className="flex gap-3 px-6 py-4"
+            className="flex gap-3 p-6"
             style={{ borderTop: '1px solid var(--border)', backgroundColor: 'var(--surface-2)', borderRadius: '0 0 1.5rem 1.5rem' }}
           >
             <button type="button" onClick={onClose} disabled={saving} className="btn btn-ghost flex-1">
