@@ -22,7 +22,7 @@ export function ListView({ missionaries, onEdit, onDelete }: ListViewProps) {
       {missionaries.map((m) => (
         <div
           key={m.id}
-          className="flex items-center gap-4 px-5 py-3.5 transition-colors duration-100"
+          className="flex items-center gap-4 p-4 transition-colors duration-100"
           style={{ '--tw-divide-color': 'var(--border)' } as React.CSSProperties}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(99,102,241,0.03)')}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
