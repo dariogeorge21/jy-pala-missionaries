@@ -85,14 +85,14 @@ export function StatsBar({ missionaries }: StatsBarProps) {
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-5">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
       {stats.map((stat) => (
         <div
           key={stat.label}
           className="card p-4 flex items-center gap-3 transition-all duration-200 hover:scale-[1.02]"
         >
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
             style={{ background: stat.bg, color: stat.color }}
           >
             {stat.icon}
