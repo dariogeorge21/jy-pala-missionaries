@@ -22,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {/* Add this main wrapper to center the website and provide global padding */}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,4 +1,17 @@
 @import "tailwindcss";
+@source "../app";
+@source "../components";
+
+
+
+/* ❌ DELETE THIS ENTIRE BLOCK ❌ */
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} 
+*/
+
 
 @theme {
   --color-primary-50: #f0f4ff;
@@ -62,12 +75,6 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.6);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
