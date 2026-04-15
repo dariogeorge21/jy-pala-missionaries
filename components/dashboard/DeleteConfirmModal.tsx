@@ -41,7 +41,7 @@ export function DeleteConfirmModal({ missionary, onConfirm, onCancel, loading }:
             ? This action cannot be undone.
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 mt-8">
             <button
               id="cancel-delete-btn"
               onClick={onCancel}
