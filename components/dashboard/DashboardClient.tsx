@@ -188,9 +188,9 @@ export function DashboardClient({ initialMissionaries, initialCustomCourses }: D
 
   // ── Render ────────────────────────────────────────────────────────────
   return (
-    <div>
+    <div className="space-y-6">
       {/* Page header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <h1 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>
             Missionaries
