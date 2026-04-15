@@ -12,6 +12,22 @@ interface MissionaryModalProps {
   onCourseAdded: (course: string) => void;
 }
 
+interface FieldProps {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}
+
+function Field({ label, error, children }: FieldProps) {
+  return (
+    <div>
+      <label className="block text-sm font-medium mb-1" style={{ color: 'var(--text)' }}>{label}</label>
+      {children}
+      {error && <p className="text-xs mt-1" style={{ color: 'var(--danger)' }}>{error}</p>}
+    </div>
+  );
+}
+
 const EMPTY_FORM: MissionaryFormData = {
   name: '',
   ministry: '',
@@ -115,14 +131,6 @@ export function MissionaryModal({ missionary, customCourses, onSave, onClose, on
       setAddingCourse(false);
     }
   };
-
-  const Field = ({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) => (
-    <div>
-      <label className="block text-sm font-medium mb-1" style={{ color: 'var(--text)' }}>{label}</label>
-      {children}
-      {error && <p className="text-xs mt-1" style={{ color: 'var(--danger)' }}>{error}</p>}
-    </div>
-  );
 
   return (
     <div className="modal-overlay" onClick={onClose}>
