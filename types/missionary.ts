@@ -33,9 +33,6 @@ export const PREDEFINED_MINISTRIES = [
   'Music Ministry',
   'Teens Ministry',
   'Intercession Ministry',
-  'Social Ministry',
+  'Family Ministry',
   'Media Ministry',
-  'Prayer Ministry',
-  'Evangelism Ministry',
-  'Children Ministry',
 ] as const;
