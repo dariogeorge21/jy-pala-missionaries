@@ -1,0 +1,19 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="16"/>
+  
+  <!-- J shape -->
+  <path d="M 50 60 Q 40 60 40 80 L 40 130 Q 40 150 60 150 Q 70 150 75 145" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Y shape -->
+  <path d="M 100 50 L 100 100 M 100 100 L 75 130 M 100 100 L 125 130" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Upper dot for Y -->
+  <circle cx="110" cy="45" r="8" fill="currentColor"/>
+  
+  <!-- Left dot for J -->
+  <circle cx="55" cy="65" r="8" fill="currentColor"/>
+  
+  <!-- Right dot for Y bottom -->
+  <circle cx="140" cy="135" r="8" fill="currentColor"/>
+</svg>

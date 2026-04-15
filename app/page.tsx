@@ -64,18 +64,10 @@ export default function LoginPage() {
       <div className="relative w-full max-w-md z-10" style={{ animation: 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both' }}>
         {/* Logo / Brand */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 shadow-2xl relative group">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 opacity-20 group-hover:opacity-40 transition-opacity blur-md" />
-            <div 
-              className="relative flex items-center justify-center w-full h-full rounded-2xl"
-              style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.2)' }}
-            >
-              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-              </svg>
-            </div>
+          <div className="inline-flex items-center justify-center rounded-2xl mb-6 shadow-2xl relative group overflow-hidden">
+            
+              <img src="/jy.png" alt="JY Pala Logo" className="w-24 h-24"/>
+            
           </div>
           <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">Jesus Youth</h1>
           <p className="text-lg md:text-xl font-medium" style={{ color: 'rgba(224,231,255,0.9)' }}>

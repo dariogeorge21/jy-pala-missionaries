@@ -30,11 +30,7 @@ export function DashboardNav() {
               className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
               style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)' }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-              </svg>
+              <img src="/jy.png" alt="JY Pala Logo" className="w-8 h-8" />
             </div>
             <div>
               <p className="text-sm font-bold leading-tight" style={{ color: 'var(--text)' }}>
