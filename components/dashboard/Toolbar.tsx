@@ -58,9 +58,9 @@ export function Toolbar({
     searchQuery || filters.ministry || filters.activeStatus !== 'all' || filters.joinedYear || filters.course;
 
   return (
-    <div className="card p-4 mb-5 no-print space-y-3">
+    <div className="card p-4 md:p-6 no-print space-y-4">
       {/* Row 1: Search + Add */}
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-col md:flex-row md:items-center gap-3">
         {/* Search */}
         <div className="relative flex-1">
           <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none" style={{ color: 'var(--text-subtle)' }}>
@@ -74,7 +74,7 @@ export function Toolbar({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by name, ministry, study/work…"
-            className="input pl-9"
+            className="input pl-9 w-full"
           />
         </div>
 
@@ -85,11 +85,12 @@ export function Toolbar({
               key={mode}
               id={`view-${mode}`}
               onClick={() => setViewMode(mode)}
-              className="px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-150 flex items-center gap-1.5"
+              className="btn btn-sm transition-all duration-150 capitalize"
               style={{
                 backgroundColor: viewMode === mode ? 'var(--surface)' : 'transparent',
                 color: viewMode === mode ? 'var(--text)' : 'var(--text-muted)',
                 boxShadow: viewMode === mode ? 'var(--shadow-sm)' : 'none',
+                borderColor: viewMode === mode ? 'var(--border)' : 'transparent',
               }}
             >
               {mode === 'table' && (
@@ -110,26 +111,26 @@ export function Toolbar({
                   <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
                 </svg>
               )}
-              <span className="capitalize">{mode}</span>
+              {mode}
             </button>
           ))}
         </div>
 
         {/* Add | Export | Print */}
-        <div className="flex gap-2">
-          <button id="add-missionary-btn" onClick={onAddNew} className="btn btn-primary">
+        <div className="flex gap-2 shrink-0">
+          <button id="add-missionary-btn" onClick={onAddNew} className="btn btn-primary flex-1 md:flex-none">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
             </svg>
             Add
           </button>
-          <button id="export-csv-btn" onClick={onExportCSV} className="btn btn-ghost" title="Export CSV">
+          <button id="export-csv-btn" onClick={onExportCSV} className="btn btn-ghost flex-1 md:flex-none" title="Export CSV">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
             CSV
           </button>
-          <button id="print-btn" onClick={onPrint} className="btn btn-ghost" title="Print">
+          <button id="print-btn" onClick={onPrint} className="btn btn-ghost flex-1 md:flex-none" title="Print">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
               <rect x="6" y="14" width="12" height="8"/>
@@ -140,15 +141,15 @@ export function Toolbar({
       </div>
 
       {/* Row 2: Filters + Sort */}
-      <div className="flex flex-wrap gap-2 items-center">
-        {/* Ministry filter */}
-        <select
-          id="filter-ministry"
-          value={filters.ministry}
-          onChange={(e) => setFilters({ ...filters, ministry: e.target.value })}
-          className="input"
-          style={{ width: 'auto', minWidth: '160px' }}
-        >
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Ministry filter */}
+          <select
+            id="filter-ministry"
+            value={filters.ministry}
+            onChange={(e) => setFilters({ ...filters, ministry: e.target.value })}
+            className="input input-inline"
+          >
           <option value="">All Ministries</option>
           {PREDEFINED_MINISTRIES.map((m) => (
             <option key={m} value={m}>{m}</option>
@@ -160,8 +161,7 @@ export function Toolbar({
           id="filter-status"
           value={filters.activeStatus}
           onChange={(e) => setFilters({ ...filters, activeStatus: e.target.value as FilterState['activeStatus'] })}
-          className="input"
-          style={{ width: 'auto', minWidth: '130px' }}
+          className="input input-inline"
         >
           <option value="all">All Status</option>
           <option value="active">Active</option>
@@ -173,8 +173,7 @@ export function Toolbar({
           id="filter-year"
           value={filters.joinedYear}
           onChange={(e) => setFilters({ ...filters, joinedYear: e.target.value })}
-          className="input"
-          style={{ width: 'auto', minWidth: '130px' }}
+          className="input input-inline"
         >
           <option value="">All Years</option>
           {joinedYears.map((y) => (
@@ -187,17 +186,17 @@ export function Toolbar({
           id="filter-course"
           value={filters.course}
           onChange={(e) => setFilters({ ...filters, course: e.target.value })}
-          className="input"
-          style={{ width: 'auto', minWidth: '160px' }}
+          className="input input-inline"
         >
           <option value="">All Courses</option>
           {allCourses.map((c) => (
             <option key={c} value={c}>{c}</option>
           ))}
         </select>
+        </div>
 
         {/* Sort */}
-        <div className="flex items-center gap-1.5 ml-auto">
+        <div className="flex flex-wrap items-center gap-1.5 shrink-0">
           <span className="text-xs" style={{ color: 'var(--text-muted)' }}>Sort:</span>
           {(['name', 'joined_year', 'ministry', 'is_active'] as SortField[]).map((field) => (
             <button
